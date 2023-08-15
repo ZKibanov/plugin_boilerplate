@@ -1,18 +1,23 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import './Counter.scss'
 
-export const Counter:React.FC = () => {
-    const [number, setNumber] = useState<number>(0)
-    return (
-        <div className="container">
-        <div className="number">{number}</div>
+export const Counter: React.FC = () => {
+  const [number, setNumber] = useState<number>(0)
   
-        <button 
+  // получаем глобальную тему через объект window
+  const globalTheme = (window as any).theme || {};
+
+  return (
+    <div className="container">
+      <div className="number">{number}</div>
+
+      <button
         className="btn"
-          onClick={() => setNumber(prev => prev+1)}
-        >
-          увеличить счетчик
-        </button>
-      </div>
-    )
+        style={{ backgroundColor: globalTheme?.secondaryColor ?? undefined, border: `2px solid ${globalTheme?.mainColor || ''}` }}
+        onClick={() => setNumber(prev => prev + 1)}
+      >
+        увеличить счетчик
+      </button>
+    </div>
+  )
 }
