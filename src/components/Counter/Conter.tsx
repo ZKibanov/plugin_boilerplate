@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Counter.scss'
 
 export const Counter: React.FC = () => {
@@ -13,7 +13,7 @@ export const Counter: React.FC = () => {
 
       <button
         className="btn"
-        style={{ backgroundColor: globalTheme?.secondaryColor ?? undefined, border: `2px solid ${globalTheme?.mainColor || ''}` }}
+        style={{ backgroundColor: globalTheme.secondaryColor ?? undefined, border: `2px solid ${globalTheme.mainColor || ''}` }}
         onClick={() => setNumber(prev => prev + 1)}
       >
         увеличить счетчик
